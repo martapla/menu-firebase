@@ -1,0 +1,74 @@
+* {
+  font-weight: 300;
+}
+
+strong {
+  font-weight: 600;
+  color:rgb(78, 144, 146);
+}
+
+.title {
+  text-align: center;
+  color:rgb(78, 144, 146);
+  font-size: 40px;
+}
+
+.meals-container {
+  border: 3px solid rgb(186, 225, 226);
+  background-color:rgb(231, 246, 247) ;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 30px;
+}
+
+.meal-card {
+  border: 2px solid rgb(242, 227, 115);
+  background-color: rgb(248, 246, 241);
+  border-radius: 6px;
+  padding: 8px;
+  margin: 10px;
+}
+
+.category {
+  text-align: center;
+  color:rgb(127, 169, 196);
+  margin: 50px;
+  font-size: 18px;
+}
+.input-search {
+  text-align: center;
+  color:rgb(127, 169, 196);
+  margin: 50px;
+  font-size: 18px;
+}
+input {
+  width: 40%;
+  min-width: 200px;
+  height: 30px;
+  border: 2px solid rgb(186, 225, 226);
+  border-radius: 8px;
+  padding-left: 10px;
+  outline: none;
+}
+
+input::placeholder {
+  color: rgb(129, 188, 190);
+  font-size: 14px;
+}
+
+.asc-des {
+  text-align: center;
+  margin-bottom: 80px ;
+}
+
+.meals-title {
+  text-align: center;
+  color:rgb(127, 169, 196);
+  font-size: 28px;
+
+}
+
+
+
