@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 
-const FilterAndSort = ({handleFilter,search, handleSearch}) => {
+const FilterAndSort = ({handleFilter, search, handleSearch, handleSort}) => {
 
    
   return (
@@ -25,8 +25,8 @@ const FilterAndSort = ({handleFilter,search, handleSearch}) => {
     </div>
 
     <div className='asc-des'>
-        <button >Ascendant ↑</button>
-        <button >Descendant ↓</button>
+        <button onClick={()=>handleSort('ascendant')}>Ascendant ↑</button>
+        <button onClick={()=>handleSort('descendant')}>Descendant ↓</button>
     </div>
     </>
   )

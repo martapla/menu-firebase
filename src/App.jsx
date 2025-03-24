@@ -6,7 +6,7 @@ import FilterAndSort from './components/FilterAndSort'
 
 
 function App() {
-  const {loading,error,filterMeals, handleFilter,handleSearch} = useFireBaseFetch()
+  const {loading, error, filterMeals, handleFilter, handleSearch, handleSort} = useFireBaseFetch()
 
 
   if (loading) return <h3>Cargando...</h3>;
@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <h1 className='title'>School Menu  🍽️ </h1>
-      <FilterAndSort handleFilter={handleFilter} handleSearch = {handleSearch}/>
+      <FilterAndSort handleFilter={handleFilter} handleSearch={handleSearch} handleSort={handleSort}/>
       <MealsList meals={filterMeals}/>
       {/* <MealsEditor /> */}
       

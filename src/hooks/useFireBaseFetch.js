@@ -6,8 +6,8 @@ export const useFireBaseFetch = () => {
     const[data,setData] = useState([])
     const[loading,setLoading] = useState(true)
     const[error,setError] = useState(null)
-    const [filterMeals, setFilterMeals] = useState([]);
-    const [search, setSearch] = useState("");
+    const [filterMeals, setFilterMeals] = useState([])
+    const [search, setSearch] = useState("")
 
     useEffect(() => {
         const fetchData = async () => {
@@ -50,7 +50,20 @@ export const useFireBaseFetch = () => {
         setFilterMeals(filteredMeals);
     };
 
-      return { data, loading, error, filterMeals, handleFilter, handleSearch, search };
+    //Filtro por Asc-Desc
+    const handleSort = (order) => {
+
+      const sortedMeals = [...filterMeals];
+
+      if(order === "ascendant"){
+        sortedMeals.sort((a,b)=>a.name.localeCompare(b.name))
+      } else {
+        sortedMeals.sort((a, b) => b.name.localeCompare(a.name));
+      }
+      setFilterMeals(sortedMeals)
+    }
+
+      return { data, loading, error, filterMeals, handleFilter, handleSearch, search, handleSort };
 
 
 
