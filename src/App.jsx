@@ -2,11 +2,11 @@ import './App.css'
 import{useFireBaseFetch} from './hooks/useFireBaseFetch'
 import MealsList from './components/MealsList'
 import FilterAndSort from './components/FilterAndSort'
-// import MealsEditor from './components/MealsEditor'
+import MealsEditor from './components/MealsEditor'
 
 
 function App() {
-  const {loading, error, filterMeals, handleFilter, handleSearch, handleSort} = useFireBaseFetch()
+  const {loading, error, filterMeals, handleFilter, handleSearch, handleSort, addNewMeal,setNewMealName,setNewMealDescription,setNewMealCategory,newMealName,newMealDescription,newMealCategory} = useFireBaseFetch()
 
 
   if (loading) return <h3>Cargando...</h3>;
@@ -17,8 +17,16 @@ function App() {
     <>
       <h1 className='title'>School Menu  🍽️ </h1>
       <FilterAndSort handleFilter={handleFilter} handleSearch={handleSearch} handleSort={handleSort}/>
-      <MealsList meals={filterMeals}/>
-      {/* <MealsEditor /> */}
+      <MealsList food={filterMeals}/>
+      <MealsEditor 
+        addNewMeal={addNewMeal} 
+        newMealName={newMealName} 
+        newMealDescription={newMealDescription} 
+        newMealCategory={newMealCategory} 
+        setNewMealName={setNewMealName}
+        setNewMealDescription={setNewMealDescription}
+        setNewMealCategory={setNewMealCategory}
+      />
       
     </>
   )

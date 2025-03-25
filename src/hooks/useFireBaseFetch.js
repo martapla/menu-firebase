@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getFood } from "../lib/foodRequest";
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../firebase/firebaseServer';
 
 export const useFireBaseFetch = () => {
 
@@ -8,6 +10,9 @@ export const useFireBaseFetch = () => {
     const[error,setError] = useState(null)
     const [filterMeals, setFilterMeals] = useState([])
     const [search, setSearch] = useState("")
+    const[newMealName, setNewMealName] = useState("")
+    const[newMealDescription, setNewMealDescription] = useState("")
+    const[newMealCategory, setNewMealCategory] = useState("")
 
     useEffect(() => {
         const fetchData = async () => {
@@ -63,11 +68,44 @@ export const useFireBaseFetch = () => {
       setFilterMeals(sortedMeals)
     }
 
-      return { data, loading, error, filterMeals, handleFilter, handleSearch, search, handleSort };
-
-
-
+    // New Meal
+    const addNewMeal = async () => {
+      if (!newMealName || !newMealDescription || !newMealCategory) {
+        console.error("Todos los campos son obligatorios.");
+        return;
+      }
     
+      try {
+        const docRef = await addDoc(collection(db, "meals"), {
+          name: newMealName, 
+          description: newMealDescription, 
+          category: newMealCategory
+        });
+    
+        console.log("Documento añadido con ID: ", docRef.id);
+    
+        // Actualizar la lista de comidas después de añadir una nueva
+        const updatedMeals = [...data, { 
+          id: docRef.id, 
+          name: newMealName, 
+          description: newMealDescription, 
+          category: newMealCategory }];
+          setData(updatedMeals);
+          setFilterMeals(updatedMeals);
+    
+        // Limpiar los inputs después de agregar la comida
+        setNewMealName("");
+        setNewMealDescription("");
+        setNewMealCategory("");
+      } catch (error) {
+        console.error("Error al añadir nueva comida: ", error);
+        setError(error.message);
+      }
+    };
+
+      return {data, loading, error, filterMeals, handleFilter, handleSearch, search, handleSort, 
+              addNewMeal,newMealName,newMealDescription,newMealCategory,setNewMealName,
+              setNewMealDescription,setNewMealCategory};    
    
 };
     
