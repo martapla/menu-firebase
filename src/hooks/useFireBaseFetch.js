@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getFood } from "../lib/foodRequest";
 import { collection, addDoc } from 'firebase/firestore';
+import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { db } from '../firebase/firebaseServer';
 
 export const useFireBaseFetch = () => {
@@ -103,9 +104,44 @@ export const useFireBaseFetch = () => {
       }
     };
 
-      return {data, loading, error, filterMeals, handleFilter, handleSearch, search, handleSort, 
-              addNewMeal,newMealName,newMealDescription,newMealCategory,setNewMealName,
-              setNewMealDescription,setNewMealCategory};    
+    const handleDelete = async (mealId) => {
+      try {
+        await deleteDoc(doc(db, "meals", mealId));
+    
+        // Actualizar la lista en el estado después de eliminar
+        const updatedMeals = data.filter(meal => meal.id !== mealId);
+        setData(updatedMeals);
+        setFilterMeals(updatedMeals);
+        
+        console.log(`Comida con ID ${mealId} eliminada.`);
+      } catch (error) {
+        console.error("Error al eliminar la comida:", error);
+        setError(error.message);
+      }
+    };
+
+    const handleEdit = async (mealId, updatedMeal) => {
+      try {
+        const mealRef = doc(db, "meals", mealId);
+        await updateDoc(mealRef, updatedMeal);
+    
+        // Actualizar la lista en el estado
+        const updatedMeals = data.map(meal => 
+          meal.id === mealId ? { ...meal, ...updatedMeal } : meal
+        );
+        setData(updatedMeals);
+        setFilterMeals(updatedMeals);
+    
+        console.log(`Comida con ID ${mealId} actualizada.`);
+      } catch (error) {
+        console.error("Error al editar la comida:", error);
+        setError(error.message);
+      }
+    };
+
+  return {data, loading, error, filterMeals, handleFilter, handleSearch, search, handleSort, 
+            addNewMeal,newMealName,newMealDescription,newMealCategory,setNewMealName,
+            setNewMealDescription,setNewMealCategory,handleDelete,handleEdit};    
    
 };
     

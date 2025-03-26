@@ -6,7 +6,7 @@ import MealsEditor from './components/MealsEditor'
 
 
 function App() {
-  const {loading, error, filterMeals, handleFilter, handleSearch, handleSort, addNewMeal,setNewMealName,setNewMealDescription,setNewMealCategory,newMealName,newMealDescription,newMealCategory} = useFireBaseFetch()
+  const {loading, error, filterMeals, handleFilter, handleSearch, handleSort, addNewMeal,setNewMealName,setNewMealDescription,setNewMealCategory,newMealName,newMealDescription,newMealCategory,handleEdit,handleDelete} = useFireBaseFetch()
 
 
   if (loading) return <h3>Cargando...</h3>;
@@ -17,7 +17,7 @@ function App() {
     <>
       <h1 className='title'>School Menu  🍽️ </h1>
       <FilterAndSort handleFilter={handleFilter} handleSearch={handleSearch} handleSort={handleSort}/>
-      <MealsList food={filterMeals}/>
+      <MealsList food={filterMeals} handleEdit={handleEdit} handleDelete={handleDelete}/>
       <MealsEditor 
         addNewMeal={addNewMeal} 
         newMealName={newMealName} 
