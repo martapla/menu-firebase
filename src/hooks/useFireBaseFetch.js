@@ -14,6 +14,7 @@ export const useFireBaseFetch = () => {
     const[newMealName, setNewMealName] = useState("")
     const[newMealDescription, setNewMealDescription] = useState("")
     const[newMealCategory, setNewMealCategory] = useState("")
+    const [weeklyPlan, setWeeklyPlan] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,6 +35,10 @@ export const useFireBaseFetch = () => {
     
         fetchData();
     }, []);
+
+    useEffect(() => {
+      console.log('Weekly Plan Data:', weeklyPlan);
+    }, [weeklyPlan]);
 
 
      // Filtro de categoría
@@ -139,13 +144,28 @@ export const useFireBaseFetch = () => {
       }
     };
 
-    const handleDay = ()=> {
-      
-    }
+    const addMealToWeeklyPlan = (day, meal) => {
+      setWeeklyPlan((prevPlan) => ({
+        ...prevPlan,
+        [day.toUpperCase()]: [...(prevPlan[day.toUpperCase()] || []), meal],
+      }));
+    };
+
+    const removeWeeklyPlan = (day, mealName) => {
+      setWeeklyPlan((prevPlan) => {
+        const updatedPlan = { ...prevPlan };
+    
+        if (updatedPlan[day]) {
+          updatedPlan[day] = updatedPlan[day].filter((meal) => meal.name !== mealName);
+        }
+    
+        return updatedPlan;
+      });
+    };
 
   return {data, loading, error, filterMeals, handleFilter, handleSearch, search, handleSort, 
-            addNewMeal,newMealName,newMealDescription,newMealCategory,setNewMealName,
-            setNewMealDescription,setNewMealCategory,handleDelete,handleEdit,handleDay};    
+            addNewMeal, newMealName, newMealDescription, newMealCategory, setNewMealName,
+            setNewMealDescription, setNewMealCategory, handleDelete, handleEdit, weeklyPlan,addMealToWeeklyPlan,removeWeeklyPlan};    
    
 };
     

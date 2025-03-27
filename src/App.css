@@ -136,3 +136,30 @@ form input {
   justify-content: flex-end;
 }
 
+.weekly-plan {
+  border: 4px solid  #f5d9d9;
+  background-color: rgb(248, 246, 241);
+  border-radius: 6px;
+  padding: 10px;
+  margin: 60px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.weekly-plan h3 {
+  text-align: center;
+  color:rgb(127, 169, 196);
+  font-size: 28px;
+}
+
+.day-plan {
+  border-top: 2px solid  #f5d9d9;
+}
+
+.day-plan h4{
+  color:rgb(127, 169, 196);
+  font-size: 18px;
+  margin-left: 30px;
+  text-decoration: underline 3px #f5d9d9;
+  text-underline-offset: 4px;
+}

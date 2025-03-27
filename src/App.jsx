@@ -3,10 +3,11 @@ import{useFireBaseFetch} from './hooks/useFireBaseFetch'
 import MealsList from './components/MealsList'
 import FilterAndSort from './components/FilterAndSort'
 import MealsEditor from './components/MealsEditor'
+import WeeklyPlan from './components/WeeklyPlan'
 
 
 function App() {
-  const {loading, error, filterMeals, handleFilter, handleSearch, handleSort, addNewMeal,setNewMealName,setNewMealDescription,setNewMealCategory,newMealName,newMealDescription,newMealCategory,handleEdit,handleDelete,handleDay} = useFireBaseFetch()
+  const {loading, error, filterMeals, handleFilter, handleSearch, handleSort, addNewMeal,setNewMealName,setNewMealDescription,setNewMealCategory,newMealName,newMealDescription,newMealCategory,handleEdit,handleDelete,weeklyPlan,addMealToWeeklyPlan,removeWeeklyPlan} = useFireBaseFetch()
 
 
   if (loading) return <h3>Cargando...</h3>;
@@ -17,7 +18,11 @@ function App() {
     <>
       <h1 className='title'>School Menu  🍽️ </h1>
       <FilterAndSort handleFilter={handleFilter} handleSearch={handleSearch} handleSort={handleSort}/>
-      <MealsList food={filterMeals} handleEdit={handleEdit} handleDelete={handleDelete}/>
+      <MealsList 
+        food={filterMeals} 
+        handleEdit={handleEdit} 
+        handleDelete={handleDelete} 
+        addMealToWeeklyPlan={addMealToWeeklyPlan}/>
       <MealsEditor 
         addNewMeal={addNewMeal} 
         newMealName={newMealName} 
@@ -27,7 +32,7 @@ function App() {
         setNewMealDescription={setNewMealDescription}
         setNewMealCategory={setNewMealCategory}
       />
-      
+      <WeeklyPlan weeklyPlan={weeklyPlan} removeWeeklyPlan={removeWeeklyPlan}/>
     </>
   )
 }

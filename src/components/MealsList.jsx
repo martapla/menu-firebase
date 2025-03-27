@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const MealsList = ({ food, handleEdit, handleDelete, handleDay }) => {
+const MealsList = ({ food, handleEdit, handleDelete, addMealToWeeklyPlan }) => {
   const [editingMealId, setEditingMealId] = useState(null);
   const [editedMeal, setEditedMeal] = useState({ name: '', description: '', category: '' });
   const [selectedDays, setSelectedDays] = useState({});
@@ -16,9 +16,14 @@ const MealsList = ({ food, handleEdit, handleDelete, handleDay }) => {
     setEditingMealId(null);
   };
 
+
   const assignDay = (mealId, day) => {
-    setSelectedDays((prev) => ({ ...prev, [mealId]: day }));
-    setShowDaySelector(null); // Oculta el selector después de elegir
+    const selectedMeal = food.find((meal) => meal.id === mealId); 
+    if (selectedMeal) {
+      addMealToWeeklyPlan(day, selectedMeal); // Agregar al plan semanal
+      setSelectedDays((prev) => ({ ...prev, [mealId]: day }));
+    }
+    setShowDaySelector(null); // Ocultar selector
   };
 
 
