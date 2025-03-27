@@ -139,9 +139,13 @@ export const useFireBaseFetch = () => {
       }
     };
 
+    const handleDay = ()=> {
+      
+    }
+
   return {data, loading, error, filterMeals, handleFilter, handleSearch, search, handleSort, 
             addNewMeal,newMealName,newMealDescription,newMealCategory,setNewMealName,
-            setNewMealDescription,setNewMealCategory,handleDelete,handleEdit};    
+            setNewMealDescription,setNewMealCategory,handleDelete,handleEdit,handleDay};    
    
 };
     

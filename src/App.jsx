@@ -6,7 +6,7 @@ import MealsEditor from './components/MealsEditor'
 
 
 function App() {
-  const {loading, error, filterMeals, handleFilter, handleSearch, handleSort, addNewMeal,setNewMealName,setNewMealDescription,setNewMealCategory,newMealName,newMealDescription,newMealCategory,handleEdit,handleDelete} = useFireBaseFetch()
+  const {loading, error, filterMeals, handleFilter, handleSearch, handleSort, addNewMeal,setNewMealName,setNewMealDescription,setNewMealCategory,newMealName,newMealDescription,newMealCategory,handleEdit,handleDelete,handleDay} = useFireBaseFetch()
 
 
   if (loading) return <h3>Cargando...</h3>;
