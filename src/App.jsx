@@ -10,7 +10,7 @@ function App() {
   const {loading, error, filterMeals, handleFilter, handleSearch, handleSort, addNewMeal,setNewMealName,setNewMealDescription,setNewMealCategory,newMealName,newMealDescription,newMealCategory,handleEdit,handleDelete,weeklyPlan,addMealToWeeklyPlan,removeWeeklyPlan} = useFireBaseFetch()
 
 
-  if (loading) return <h3>Cargando...</h3>;
+  if (loading) return <h3 className='loading'>Loading...</h3>;
   if (error) return <h3>Error: {error}</h3>;
 
 

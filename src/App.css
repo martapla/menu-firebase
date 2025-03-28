@@ -2,6 +2,10 @@
   font-weight: 300;
 }
 
+.loading {
+ text-align: center;
+}
+
 body {
   background: linear-gradient(90deg, rgb(239 164 67 / 8%) 50%, transparent 0),
     linear-gradient(rgb(255 193 7 / 8%) 50%, transparent 0);
@@ -182,8 +186,8 @@ form input {
 
 @media (max-width: 768px) {
 
-  .title {
-    padding-top: 0px;
+  * {
+    font-weight: 400;
   }
 
   .meal-card {
