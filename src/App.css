@@ -2,32 +2,32 @@
   font-weight: 300;
 }
 
-body{
-  /* background-color: rgb(251, 247, 228); */
-    background: linear-gradient(90deg, rgb(239 164 67 / 8%) 50%, transparent 0),
-    linear-gradient(rgb(255 193 7 / 8%) 50%, transparent 0); 
-    background-size: 20px 20px;
+body {
+  background: linear-gradient(90deg, rgb(239 164 67 / 8%) 50%, transparent 0),
+    linear-gradient(rgb(255 193 7 / 8%) 50%, transparent 0);
+  background-size: 20px 20px;
 }
 
 strong {
   font-weight: 600;
-  color:rgb(78, 144, 146);
+  color: rgb(78, 144, 146);
 }
 
 .title {
   text-align: center;
-  color:rgb(78, 144, 146);
+  color: rgb(78, 144, 146);
   font-size: 40px;
+  padding-top: 30px;
 }
 
 .meals-container {
   border: 3px solid rgb(186, 225, 226);
-  background-color:rgb(231, 246, 247) ;
+  background-color: rgb(231, 246, 247);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   padding: 10px;
-  margin: 30px;
+  margin: 60px;
 }
 
 .meal-card {
@@ -48,8 +48,8 @@ strong {
 .meal-card-input {
   display: flex;
   flex-direction: column;
-  gap:10px;
-  width:100%;
+  gap: 10px;
+  width: 100%;
 }
 
 .meal-input-btn {
@@ -59,16 +59,18 @@ strong {
 
 .category {
   text-align: center;
-  color:rgb(127, 169, 196);
+  color: rgb(127, 169, 196);
   margin: 50px;
   font-size: 18px;
 }
+
 .input-search {
   text-align: center;
-  color:rgb(127, 169, 196);
+  color: rgb(127, 169, 196);
   margin: 50px;
   font-size: 18px;
 }
+
 input {
   width: 40%;
   min-width: 200px;
@@ -86,12 +88,12 @@ input::placeholder {
 
 .asc-des {
   text-align: center;
-  margin-bottom: 80px ;
+  margin-bottom: 80px;
 }
 
 .meals-title {
   text-align: center;
-  color:rgb(127, 169, 196);
+  color: rgb(127, 169, 196);
   font-size: 28px;
 
 }
@@ -103,20 +105,20 @@ input::placeholder {
 
 .addmeals-title {
   text-align: center;
-  color:rgb(127, 169, 196);
+  color: rgb(127, 169, 196);
   font-size: 28px;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap:20px;
+  gap: 20px;
   justify-content: center;
   align-items: center;
 }
 
 form input {
-  width:70%;
+  width: 70%;
 }
 
 .day-selector {
@@ -128,38 +130,83 @@ form input {
   display: flex;
   flex-direction: column;
 }
+
 .meal-card-calendar {
   display: flex;
 }
+
 .btn-edit-del {
   display: flex;
   justify-content: flex-end;
 }
 
 .weekly-plan {
-  border: 4px solid  #f5d9d9;
+  border: 4px solid #f5d9d9;
   background-color: rgb(248, 246, 241);
   border-radius: 6px;
   padding: 10px;
-  margin: 60px 30px;
+  margin: 60px;
   display: flex;
   flex-direction: column;
 }
 
 .weekly-plan h3 {
   text-align: center;
-  color:rgb(127, 169, 196);
+  color: rgb(127, 169, 196);
   font-size: 28px;
 }
 
 .day-plan {
-  border-top: 2px solid  #f5d9d9;
+  border-top: 2px solid #f5d9d9;
 }
 
-.day-plan h4{
-  color:rgb(127, 169, 196);
+.day-plan h4 {
+  color: rgb(127, 169, 196);
   font-size: 18px;
   margin-left: 30px;
   text-decoration: underline 3px #f5d9d9;
   text-underline-offset: 4px;
+}
+
+.day-plan button {
+  padding: 4px;
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+.day-plan p {
+  margin-left: 30px;
+}
+
+
+
+@media (max-width: 768px) {
+
+  .title {
+    padding-top: 0px;
+  }
+
+  .meal-card {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .meals-container {
+    padding: 0px;
+    margin: 10px;
+  }
+
+  .meal-card-calendar {
+    justify-content: flex-end;
+  }
+
+  .weekly-plan {
+    padding: 0px;
+    margin: 60px 10px;
+  }
+
+  .day-plan li {
+    margin-bottom: 30px;
+  }
+
 }

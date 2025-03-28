@@ -12,16 +12,15 @@ const WeeklyPlan = ({ weeklyPlan,removeWeeklyPlan }) => {
         {daysOfWeek.map((day) => (
           <div key={day} className="day-plan">
             <h4>{day}</h4>
-            {/* Si hay comidas asignadas a este día, se muestra */}
+           
             {weeklyPlan[day] && weeklyPlan[day].length > 0 ? (
               <ul>
                 {weeklyPlan[day].map((meal, index) => (
                   <li key={index}>
-                    {/* <strong>{meal.name}</strong> - {meal.category} ({meal.description}) */}
-                    <strong>{meal.category} : </strong>  {meal.name} - {meal.description}
-                    <button onClick={() => handleDelete(day, meal.name)}>
+                        <strong>{meal.category} : </strong>  {meal.name} - {meal.description}
+                        <button onClick={() => handleDelete(day, meal.name)}>
                             🗑️
-                          </button>
+                        </button>
                   </li>
                 ))}
               </ul>
